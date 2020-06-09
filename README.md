@@ -1,1 +1,1 @@
-# centos7
+# RedHat Enterprise Linux 7 系统管理员指南
