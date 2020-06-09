@@ -19,7 +19,7 @@
 3. 设置DNS
 
    ```
-   # cat /etc/resolv.conf
+   # vi /etc/resolv.conf
    ```
 
    
