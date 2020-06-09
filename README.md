@@ -47,7 +47,7 @@ firewall
 1. 开启firewall服务  
 
    ```
-   # systemctl stop firewalld
+   # systemctl start firewalld
    ```
 
    
