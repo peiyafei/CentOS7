@@ -26,13 +26,47 @@
 
 # 二、配置Selinux和Firewall
 
+​	Selinux
+
 1. 关闭Selinux服务  
 
-   ```
-   # vi /etc/selinux/config
-   SELINUX=enforcing更改为SELINUX=disabled
-   # reboot 重启生效
-   
-   ```
+```
+# vi /etc/selinux/config
+SELINUX=enforcing更改为SELINUX=disabled
+# reboot 重启生效
+```
 
-2. 
+2. 查看Selinux状态  
+
+```
+# sestatus
+```
+
+firewall
+
+1. 关闭firewall服务  
+
+```
+# systemctl stop firewalld
+```
+
+2. 禁止开机启动firewall服务  
+
+```
+# systemctl disable firewalld
+```
+
+3. 允许开机启动firewall服务  
+
+```
+# systemctl enable firewalld
+```
+
+
+
+4. 查看firewall状态  
+
+```
+# systemctl status firewalld
+```
+
