@@ -28,7 +28,7 @@
 
 # 二、配置Selinux和Firewall
 
-​	Selinux
+## 	Selinux
 
 1. 关闭Selinux服务  
 
@@ -44,7 +44,7 @@
    # sestatus
    ```
 
-firewall
+## firewall
 
 1. 开启firewall服务  
 
@@ -78,5 +78,64 @@ firewall
    # systemctl status firewalld
    ```
 
-   
+# 三、将Samba设置为域成员
 
+## 加入域
+
+1. 将CentOS的DNS指向域控制器
+
+   ```
+   # vi /etc/resolv.conf
+   ```
+
+2. 安装以下软件包
+
+   ```
+   # yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools -y
+   ```
+
+3. 要共享域成员上的目录或打印机，安装samba软件包
+
+   ```
+   # yum install samba -y
+   ```
+
+4. 加入AD，需另外安装samba-winbind-krb5-locator软件包
+
+   ```
+   # yum install samba-winbind-krb5-locator -y
+   ```
+
+5. 重命名现有的/etc/samba/smb.conf Samba配置文件
+
+   ```
+   # mv /etc/samba/smb.conf /etc/samba/smb.conf.old
+   ```
+
+6. 加入域， 例如，要加入一个名为ad.example.com的域
+
+   ```
+   # realm join --membership-software=samba --client-software=winbind ad.example.com
+   ```
+
+7. 验证winbindd是否正在运行
+
+   ```
+   # systemctl status winbind
+   ```
+
+8. 启动smbd服务
+
+   ```
+   # systemctl start smb
+   ```
+   
+   ## 验证Samba是否已作为域成员正确加入
+
+1. 查询AD域的管理员帐号
+
+   ```
+   # getent passwd ad.example.com\administrator
+   ```
+
+2. 
