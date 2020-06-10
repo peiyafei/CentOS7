@@ -118,7 +118,7 @@
    # mv /etc/samba/smb.conf /etc/samba/smb.conf.old
    ```
 
-7. 加入域， 例如，要加入一个名为ad.example.com的域
+7. 加入域， 例如，要加入一个名为*ad.example.com*的域
 
    ```
    # realm join --membership-software=samba --client-software=winbind ad.example.com
