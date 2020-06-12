@@ -81,7 +81,7 @@
 
    ```
    # vi /etc/selinux/config
-   SELINUX=enforcing更改为SELINUX=disabled
+   SELINUX=enforcing 更改为 SELINUX=disabled
    # reboot 重启生效
    ```
 
