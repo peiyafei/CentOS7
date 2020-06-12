@@ -2,7 +2,9 @@
 
 [TOC]
 
-# 	一、配置IP地址
+# 	一、配置IP地址和SSH
+
+## 配置IP地址
 
 1. 列出网络适配器
 
@@ -23,8 +25,48 @@
    ```
    # vi /etc/resolv.conf
    ```
+   
+## 配置SSH
+
+1. 打开/etc/ssh/sshd_config文件
+
+   ```
+   # vi /etc/ssh/sshd_config
+   ```
+
+2. 使root具备ssh登录的权限，去掉#注释
+
+   ```
+   #PermitRootLogin yes
+   ```
+
+   改为
+
+   ```
+   PermitRootLogin yes
+   ```
+
+3. 启用22号端口，去掉前面的注释
+
+   ```
+   #Port 22
+   ```
+
+   改为
+
+   ```
+   Port 22
+   ```
+
+4. 重启sshd服务
+
+   ```
+   # systemctl restart sshd
+   ```
 
    
+
+5. 
 
 # 二、配置Selinux和Firewall
 
@@ -77,6 +119,14 @@
    ```
    # systemctl status firewalld
    ```
+
+6. 防火墙放行ssh
+
+   ```
+   # firewall-cmd --permanent --add-service=ssh
+   ```
+
+   
 
 # 三、将Samba设置为域成员
 
