@@ -128,6 +128,10 @@
    # firewall-cmd --permanent --add-service=ssh
    ```
 
+   ```
+   # firewall-cmd --reload
+   ```
+   
    
 
 # 三、将Samba设置为域成员
