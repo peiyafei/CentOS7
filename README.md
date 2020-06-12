@@ -199,4 +199,12 @@
    # getent group "ad.example.com\\Domain Users"
    ```
 
-3. 
+12. 如果以上命令可以正常执行，可以使用域用户和组设置文件和目录的权限。
+
+    例如，设置/root/svr/example.txt文件的所有者ad.example.com\administrator和组ad.example.com\Domain Users用户
+
+    ```
+    # chown "ad.example.com\administrator":"ad.example.com\Domain Users" /root/svr/example.txt
+    ```
+
+13. 
