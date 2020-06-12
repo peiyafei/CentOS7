@@ -61,7 +61,7 @@
 4. 防火墙放行ssh服务并重新加载防火墙
 
    ```
-   # firewall-cmd --permanent --add-service=samba
+   # firewall-cmd --permanent --add-service=ssh
    # firewall-cmd --reload
    ```
 
