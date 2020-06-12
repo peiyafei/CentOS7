@@ -58,15 +58,17 @@
    Port 22
    ```
 
-4. 重启sshd服务
+4. 防火墙放行ssh服务及重新加载防火墙
+
+   ```
+   firewall-cmd --permanent --add-service=samba
+   ```
+
+5. 重启sshd服务
 
    ```
    # systemctl restart sshd
    ```
-
-   
-
-5. 
 
 # 二、配置Selinux和Firewall
 
