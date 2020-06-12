@@ -58,10 +58,11 @@
    Port 22
    ```
 
-4. 防火墙放行ssh服务及重新加载防火墙
+4. 防火墙放行ssh服务并重新加载防火墙
 
    ```
-   firewall-cmd --permanent --add-service=samba
+   # firewall-cmd --permanent --add-service=samba
+   # firewall-cmd --reload
    ```
 
 5. 重启sshd服务
@@ -69,6 +70,8 @@
    ```
    # systemctl restart sshd
    ```
+
+   
 
 # 二、配置Selinux和Firewall
 
@@ -122,16 +125,6 @@
    # systemctl status firewalld
    ```
 
-6. 防火墙放行ssh
-
-   ```
-   # firewall-cmd --permanent --add-service=ssh
-   ```
-
-   ```
-   # firewall-cmd --reload
-   ```
-   
    
 
 # 三、将Samba设置为域成员
