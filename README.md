@@ -187,10 +187,16 @@
 
    ## 验证Samba是否已作为域成员正确加入
 
-1. 查询AD域的管理员帐号
+1. 查询AD域的管理员帐号administrator
 
    ```
-   # getent passwd ad.example.com\administrator
+   # getent passwd ad.example.com\\administrator
    ```
 
-2. 
+2. 查询AD域中“ Domain Users”组的成员
+
+   ```
+   # getent group "ad.example.com\\Domain Users"
+   ```
+
+3. 
