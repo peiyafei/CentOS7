@@ -204,7 +204,54 @@
     例如，设置/root/svr/example.txt文件的所有者ad.example.com\administrator和组ad.example.com\Domain Users用户
 
     ```
+    # mkdir -p /srv/samba/example/
     # chown "ad.example.com\administrator":"ad.example.com\Domain Users" /root/svr/example.txt
     ```
 
-13. 
+13. 例如，要将/ srv / samba / example /目录的所有者设置为root用户，请对Domain Users组授予读写权限，并拒绝对所有其他用户的访问：
+
+    ```
+    # chown root:"Domain Users" /srv/samba/example/
+    # chmod 2770 /srv/samba/example/
+    ```
+
+14. 在Samba服务器上配置文件共享，在smb.conf中添加如下配置信息
+
+    ```
+    # vim /etc/samba/smb.conf
+    [example]
+    path = /srv/samba/example/
+    read only = no
+    writable = yes
+    ```
+
+15. 在windows计算机进行访问，例如，samba服务器地址为：192.168.253.100
+
+    ```
+    \\192.168.253.100
+    ```
+
+16. 关于 强制位（s权限）和粘滞位（t权限）说明：
+
+    -  S_ISUID、S_ISGID两个常量，叫做强制位权限，作用在于设置使文件在执行阶段具有文件所有者的权限，相当于临时拥有文件所有者的身份 ，一个文件运行时的身份，可以分别通过以下命令来设置s权限：
+
+      ```
+      chmod u+xs filename 
+      chmod u-s filename 
+      chmod g+xs filename 
+      chmod g-s filename 
+      ```
+
+      在设置s权限时文件属主、属组必须先设置相应的x权限，否则s权限并不能正真生效（chmod命令不进	行必	要的完整性检查，即使不设置x权限就设置s权限，chmod也不会报错，当我们ls -l时看到rwS，	大写S说明s	权限未生效）
+
+    
+
+    -  S_ISVTX 使一个目录既能够让任何用户写入文档，又不让用户删除这个目录下他人的文档，t权限就是能起到这个作用。t权限一般只用在目录上，用在文档上起不到什么作用
+      在一个目录上设了t权限位后，（如/home，权限为1777)任何的用户都能够在这个目录下创建文档，但只能删除自己创建的文档(root除外)，这就对任何用户能写的目录下的用户文档 启到了保护的作用，可以通过以下命令来设置t权限
+
+      ```
+      chmod +t filename
+      chmod -t filename
+      ```
+
+17.  
