@@ -211,7 +211,7 @@
 13. 例如，要将/ srv / samba / example /目录的所有者设置为root用户，请对Domain Users组授予读写权限，并拒绝对所有其他用户的访问：
 
     ```
-    # chown root:"Domain Users" /srv/samba/example/
+    # chown root:"ad.example.com\Domain Users" /srv/samba/example/
     # chmod 2770 /srv/samba/example/
     ```
 
@@ -222,9 +222,8 @@
     [example]
     path = /srv/samba/example/
     read only = no
-    writable = yes
     ```
-
+    
 15. 在windows计算机进行访问，例如，samba服务器地址为：192.168.253.100
 
     ```
