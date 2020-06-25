@@ -131,7 +131,7 @@
 
 1. 将分区表设置为gpt格式
 
-   [https://github.com/peiyafei/centos7/blob/master/images/centos7%20install_01.png]: 
+   []: https://github.com/peiyafei/centos7/blob/master/images/centos7%20install_01.png
 
    
 
