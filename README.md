@@ -131,9 +131,13 @@
 
 1. 将分区表设置为gpt格式
 
-   ![](G:\github\githubdoc\centos7\centos7\centos7\images\centos7 install_01.png)
+   [https://github.com/peiyafei/centos7/blob/master/images/centos7%20install_01.png]: 
 
-2. 磁盘分区
+   
+
+2. 
+
+   磁盘分区
 
 
 
