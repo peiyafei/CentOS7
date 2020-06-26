@@ -131,7 +131,7 @@
 
 1. 将分区表设置为gpt格式
 
-   ![](.\images\centos7 install_01.png)
+   ![](./images/centos7 install_01.png)
 
 2. 
 
