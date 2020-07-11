@@ -187,6 +187,7 @@
 8. 验证winbindd是否正在运行
 
    ```
+   # systemctl start winbind
    # systemctl status winbind
    ```
 
@@ -194,6 +195,7 @@
 
    ```
    # systemctl start smb
+   # systemctl status smb
    ```
 
    ## 验证Samba是否已作为域成员正确加入
