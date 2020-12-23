@@ -142,56 +142,62 @@
 
 ## 加入域
 
-1. 将CentOS的DNS指向域控制器
+1. 防火墙放行samba服务
+
+   ```
+   # firewall-cmd --permanent --add-service=samba
+   ```
+
+2. 将CentOS的DNS指向域控制器
 
    ```
    # vi /etc/resolv.conf
    ```
 
-2. 使CentOS从域控制器同步时间，例如，域控制器IP地址为：192.168.253.130
+3. 使CentOS从域控制器同步时间，例如，域控制器IP地址为：192.168.253.130
 
    ```
    # ntpdate 192.168.253.130
    ```
 
-3. 安装以下软件包
+4. 安装以下软件包
 
    ```
    # yum install realmd oddjob-mkhomedir oddjob samba-winbind-clients samba-winbind samba-common-tools -y
    ```
 
-4. 要共享域成员上的目录或打印机，安装samba软件包
+5. 要共享域成员上的目录或打印机，安装samba软件包
 
    ```
    # yum install samba -y
    ```
 
-5. 加入AD，需另外安装samba-winbind-krb5-locator软件包
+6. 加入AD，需另外安装samba-winbind-krb5-locator软件包
 
    ```
    # yum install samba-winbind-krb5-locator -y
    ```
 
-6. 重命名现有的/etc/samba/smb.conf Samba配置文件
+7. 重命名现有的/etc/samba/smb.conf Samba配置文件
 
    ```
    # mv /etc/samba/smb.conf /etc/samba/smb.conf.old
    ```
 
-7. 加入域， 例如，要加入一个名为*ad.example.com*的域
+8. 加入域， 例如，要加入一个名为*ad.example.com*的域
 
    ```
    # realm join --membership-software=samba --client-software=winbind ad.example.com
    ```
 
-8. 验证winbindd是否正在运行
+9. 验证winbindd是否正在运行
 
    ```
    # systemctl start winbind
    # systemctl status winbind
    ```
 
-9. 启动smbd服务
+10. 启动smbd服务
 
    ```
    # systemctl start smb
@@ -200,19 +206,19 @@
 
    ## 验证Samba是否已作为域成员正确加入
 
-1. 查询AD域的管理员帐号administrator
+11. 查询AD域的管理员帐号administrator
 
-   ```
-   # getent passwd ad.example.com\\administrator
-   ```
+    ```
+    # getent passwd ad.example.com\\administrator
+    ```
 
-2. 查询AD域中“ Domain Users”组的成员
+12. 查询AD域中“ Domain Users”组的成员
 
-   ```
-   # getent group "ad.example.com\\Domain Users"
-   ```
+    ```
+    # getent group "ad.example.com\\Domain Users"
+    ```
 
-12. 如果以上命令可以正常执行，可以使用域用户和组设置文件和目录的权限。
+13. 如果以上命令可以正常执行，可以使用域用户和组设置文件和目录的权限。
 
     例如，设置/root/svr/example.txt文件的所有者ad.example.com\administrator和组ad.example.com\Domain Users用户
 
@@ -221,14 +227,14 @@
     # chown "ad.example.com\administrator":"ad.example.com\Domain Users" /root/svr/example.txt
     ```
 
-13. 例如，要将/ srv / samba / example /目录的所有者设置为root用户，请对Domain Users组授予读写权限，并拒绝对所有其他用户的访问：
+14. 例如，要将/ srv / samba / example /目录的所有者设置为root用户，请对Domain Users组授予读写权限，并拒绝对所有其他用户的访问：
 
     ```
     # chown root:"ad.example.com\Domain Users" /srv/samba/example/
     # chmod 2770 /srv/samba/example/
     ```
 
-14. 在Samba服务器上配置文件共享，在smb.conf中添加如下配置信息
+15. 在Samba服务器上配置文件共享，在smb.conf中添加如下配置信息
 
     ```
     # vim /etc/samba/smb.conf
@@ -236,14 +242,14 @@
     path = /srv/samba/example/
     read only = no
     ```
-    
-15. 在windows计算机进行访问，例如，samba服务器地址为：192.168.253.100
+
+16. 在windows计算机进行访问，例如，samba服务器地址为：192.168.253.100
 
     ```
     \\192.168.253.100
     ```
 
-16. 关于 强制位（s权限）和粘滞位（t权限）说明：
+17. 关于 强制位（s权限）和粘滞位（t权限）说明：
 
     -  S_ISUID、S_ISGID两个常量，叫做强制位权限，作用在于设置使文件在执行阶段具有文件所有者的权限，相当于临时拥有文件所有者的身份 ，一个文件运行时的身份，可以分别通过以下命令来设置s权限：
 
@@ -266,4 +272,7 @@
       chmod -t filename
       ```
 
-17.  
+18. 
+
+
+
