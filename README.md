@@ -1,6 +1,18 @@
 # CentOS 7 系统管理员指南
 
-[TOC]
+目录
+
+一、[配置IP地址和SSH](https://github.com/peiyafei/CentOS7#%E4%B8%80%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80%E5%92%8Cssh)
+
+二、配置Selinux和Firewall
+
+三、系统安装
+
+
+
+
+
+
 
 # 	一、配置IP地址和SSH
 
