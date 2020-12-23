@@ -2,11 +2,11 @@
 
 目录
 
-一、[配置IP地址和SSH](https://github.com/peiyafei/CentOS7#%E4%B8%80%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80%E5%92%8Cssh)
+[一、配置IP地址和SSH](https://github.com/peiyafei/CentOS7#%E4%B8%80%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80%E5%92%8Cssh)
 
-二、配置Selinux和Firewall
+[二、配置Selinux和Firewall](https://github.com/peiyafei/CentOS7#%E4%BA%8C%E9%85%8D%E7%BD%AEselinux%E5%92%8Cfirewall)
 
-三、系统安装
+[三、系统安装](https://github.com/peiyafei/CentOS7#%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85)
 
 
 
