@@ -1,16 +1,6 @@
 # CentOS 7 系统管理员指南
 
-# 										目录
-
-[一、配置IP地址和SSH](https://github.com/peiyafei/CentOS7#%E4%B8%80%E9%85%8D%E7%BD%AEip%E5%9C%B0%E5%9D%80%E5%92%8Cssh)
-
-[二、配置Selinux和Firewall](https://github.com/peiyafei/CentOS7#%E4%BA%8C%E9%85%8D%E7%BD%AEselinux%E5%92%8Cfirewall)
-
-[三、系统安装](https://github.com/peiyafei/CentOS7#%E4%B8%89%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85)
-
-[四、将Samba设置为域成员](https://github.com/peiyafei/CentOS7#%E5%9B%9B%E5%B0%86samba%E8%AE%BE%E7%BD%AE%E4%B8%BA%E5%9F%9F%E6%88%90%E5%91%98)
-
-
+[TOC]
 
 
 
@@ -83,9 +73,26 @@
    # systemctl restart sshd
    ```
 
-   
 
-# 二、配置Selinux和Firewall
+
+
+# 二、开机启动级别
+
+开机默认进入命令行模式
+
+~~~
+systemctl set-default multi-user.target
+~~~
+
+开机默认进入图形用户界面
+
+~~~
+systemctl set-default graphical.target
+~~~
+
+
+
+# 三、配置Selinux和Firewall
 
 ## 	Selinux
 
@@ -139,7 +146,7 @@
 
    
 
-# 三、系统安装
+# 四、系统安装
 
 1. 将分区表设置为gpt格式
    1. 将光标移到【install CentOS 7】位置
@@ -150,7 +157,7 @@
    2. 选择手动建立分区
 
 
-# 四、将Samba设置为域成员
+# 五、将Samba设置为域成员
 
 ## 加入域
 
