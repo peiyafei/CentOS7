@@ -1,5 +1,19 @@
 # CentOS 7 系统管理员指南
 
+目录
+
+一、配置IP地址和SSH
+
+二、开机启动级别
+
+三、配置Selinux和Firewall
+
+四：系统安装
+
+五、将Samba设置为域成员
+
+
+
 # 	一、配置IP地址和SSH
 
 ## 配置IP地址
