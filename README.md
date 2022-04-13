@@ -70,12 +70,21 @@
    Port 22
    ```
 
-4. 防火墙放行ssh服务并重新加载防火墙
+4. 防火墙放行ssh服务并重新加载防火墙（永久生效）
 
    ```
-   # firewall-cmd --permanent --add-service=ssh
+   # firewall-cmd --add-service=ssh --permanent
    # firewall-cmd --reload
    ```
+
+   若已更改端口号，采用如下命令放行（永久生效）
+
+   ```
+   # firewall-cmd --add-port=10022/tcp --permanent
+   # firewall-cmd --reload
+   ```
+
+   
 
 5. 重启sshd服务
 
@@ -119,6 +128,15 @@ systemctl set-default graphical.target
    ```
    # sestatus
    ```
+
+3. 例如，修改SSH端口为10022，则如下命令修改端口的上下文类型
+
+   ```
+   # semanage port -a -t ssh_port_t -p tcp 10022
+   # semanage port -l | grep ssh
+   ```
+
+   
 
 ## firewall
 
