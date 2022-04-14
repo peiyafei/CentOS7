@@ -115,7 +115,7 @@ systemctl set-default graphical.target
 
 ## 	Selinux
 
-1. 关闭Selinux服务  
+1. 关闭Selinux服务  （不推荐）
 
    ```
    # vi /etc/selinux/config
@@ -123,11 +123,19 @@ systemctl set-default graphical.target
    # reboot 重启生效
    ```
 
-2. 查看Selinux状态  
+2. 查看SElinux状态  
 
    ```
    # sestatus
    ```
+
+   或
+
+   ```
+   # getenforce
+   ```
+
+   
 
 3. 例如，修改SSH端口为10022，则如下命令修改端口的上下文类型
 
@@ -135,6 +143,14 @@ systemctl set-default graphical.target
    # semanage port -a -t ssh_port_t -p tcp 10022
    # semanage port -l | grep ssh
    ```
+
+   ### 额外说明：
+
+   |    名称    |         模式         |            作用            |
+   | :--------: | :------------------: | :------------------------: |
+   | enforcing  |       强制模式       |   拒绝非法访问并录入日志   |
+   | permissive | 许可模式（警告模式） | 暂时允许非法访问并录入日志 |
+   |  disabled  |       禁用模式       |  允许非法访问且不录入日志  |
 
    
 
