@@ -152,7 +152,17 @@ systemctl set-default graphical.target
    | permissive | 许可模式（警告模式） | 暂时允许非法访问并录入日志 |
    |  disabled  |       禁用模式       |  允许非法访问且不录入日志  |
 
+   临时关闭selinux策略
    
+   ```
+   # setenforce 0
+   ```
+   
+   临时开启selinux策略
+   
+   ```
+   # setenforce 1
+   ```
 
 ## firewall
 
